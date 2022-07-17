@@ -59,7 +59,7 @@ def user_number_choices():
                 POWERBALL = int(input("POWERBALL number"))
                 if 26 > POWERBALL > 0:
                     user_choices.append(POWERBALL)
-                    break;
+                    break
                 else:
                     print("Pick another number")
             break
@@ -67,7 +67,15 @@ def user_number_choices():
             print("Only numbers")
     return user_choices
 
-def check_lottery():
+
+def check_lottery(user_choices, v):
+    listing = []
+    for i in user_choices:
+        for j in v:
+            if i == j:
+                listing.append(i)
+    print(listing)
+
 
 
 def pick_lotto():
@@ -103,12 +111,19 @@ def run():
         else:
             print(pick_lotto())
 
+def main():
+    welcome_message()
+    listing = []
+    for i in user_number_choices():
+        for j in pick_lotto():
+            if i == j:
+                listing.append(i)
+    print(listing)
 
 # immediate-mode commands, for drag-and-drop or execfile() execution
 if __name__ == '__main__':
-    welcome_message()
-    user_number_choices()
-    run()
+    main()
+    # run()
 # else:
 #     print("Module lotto imported.")
 #     print("To run, type: lotto.run()")
